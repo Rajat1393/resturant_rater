@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from rater.forms import UserForm,UserProfileForm
 from django.contrib.auth import authenticate, login , logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -58,3 +59,8 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
     else:
         return render(request, 'rater/login.html')
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('rater:index'))

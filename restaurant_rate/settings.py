@@ -27,8 +27,13 @@ SECRET_KEY = '4bqv!zmy$de8d#&jf8=v%rb8ld2t1vctl@8)28h(yfaiu=7(15'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
-LOGIN_URL = 'rater:login'
+
+REGISTRATION_OPEN = True
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = 'rater:index'
+LOGIN_URL = 'auth_login'
 
 # Application definition
 
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rater',
+    'registration',  # Add in the registration package
 ]
 
 MIDDLEWARE = [
