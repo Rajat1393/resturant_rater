@@ -64,3 +64,6 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect(reverse('rater:index'))
+
+def contactus(request):
+    return render(request, 'rater/contactus.html')

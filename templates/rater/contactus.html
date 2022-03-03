@@ -1,0 +1,33 @@
+{% extends 'rater/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block body_block %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resturant_rater</title>
+   
+</head>
+<body>
+    <div class="jumbotron p-4">
+        <div class="container">
+            <h1 class="jumbotron-heading">Contact Us</h1>
+            <div>
+                <h4 class="h2">
+                Email: 26xxxxx@gmail.com<br>
+                Telephone: 075xx-xxx-xxx<br>
+                Address: University of Glasgow, Glasgow<br>
+                </h4>
+                <strong>{{ boldmessage }}</strong>
+            </div>
+        </div>
+    </div>
+   
+</body>
+{% endblock %}
