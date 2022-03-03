@@ -1,8 +1,68 @@
+{% extends 'rater/base.html' %}
+{% load staticfiles %}
 
-{% extends 'rater/base.html' %} 
-    <body>
-        <h1>Index</h1>
-        <a href="{% url 'rater:login' %}">Login</a>
-        <a href="{% url 'rater:register' %}">register</a>
-    </body>
-</html>
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron p-4">
+    <div class="container">
+        <h1 class="jumbotron-heading">This is Restaurant Rater</h1>
+        <div>
+            <h2 class="h2">
+            {% if user.is_authenticated %}
+                Hello {{ user.username }}!
+            {% else %}
+                hey there! Please log in/sign up!
+            {% endif %}
+            </h2>
+            <strong>{{ boldmessage }}</strong>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-6">
+                <div class="card-body">
+                    <h2>Most Liked Restaurant Categories</h2>
+                    <p class="card-text">
+                    {% if categories %}
+                    <ul class="list-group">
+                    {% for category in categories %}
+                        <li class="list-group-item"><a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                    </ul>
+                    {% else %}
+                    <strong>There are no categories present.</strong>
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-6">
+                <div class="card-body">
+                    <h2>Most Viewed Restaurant Pages</h2>
+                    <p class="card-text">
+                    {% if pages %}
+                    <ul class="list-group">
+                    {% for page in pages %}
+                        <li class="list-group-item"><a href="{{ page.url }}">{{ page.title }}</a></li class="list-group-item">
+                    {% endfor %}
+                    </ul>
+                    {% else %}
+                    <strong>There are no pages present.</strong>
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
+{% endblock %}
