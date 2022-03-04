@@ -17,8 +17,11 @@
         <div class="container">
             <div class="row">
                 <div class="form-group" >
-                   
+                    {% if registered %}
+                    <strong style="color: blue;">Thank you for registering!</strong><br/>
+                    {% else %}
                     <strong>register here!</strong><br />
+                    {%  endif %}
                     
                     <form role="form"  method="post" action="{% url 'rater:register' %}" >
                         {% csrf_token %}

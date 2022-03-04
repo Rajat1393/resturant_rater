@@ -30,7 +30,7 @@ def register(request):
     else:
         user_form = UserForm()
     
-    return render(request, 'rater/login.html', context={'user_form': user_form, 'registered': registered})
+    return render(request, 'rater/register.html', context={'user_form': user_form, 'registered': registered})
 
 def user_login(request):
     if request.method == 'POST':
