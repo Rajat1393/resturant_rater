@@ -30,11 +30,10 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'rater:index' %}">Home</a></li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'auth_logout' %}?next=/rater/">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'auth_password_change' %}">Change Password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'rater:logout' %}?next=/rater/">Logout</a></li>
                         {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'registration_register' %}">Register Here</a></li>
-                        <li class="nav-item "><a class="nav-link" href="{% url 'auth_login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'rater:register' %}">Register Here</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{% url 'rater:login' %}">Login</a></li>
                         {% endif %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'rater:contactus' %}">Contact</a></li>
                     </ul>

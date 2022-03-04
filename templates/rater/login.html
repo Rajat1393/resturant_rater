@@ -9,6 +9,10 @@
     <body>
         <!--<h1>Login</h1>-->
         <div class="container">
+            {% if registered %}
+            <strong style="color: blue;">Thank you for registering! Now please login</strong><br/>
+            
+            {%  endif %}
             <form class="form-signin" id="login_form" method="post" action="{% url 'rater:login' %}">
             {% csrf_token %}
             <label class="text-only">Username<label style="color: red;">*</label></label>
