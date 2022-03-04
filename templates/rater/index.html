@@ -1,8 +1,11 @@
 
 {% extends 'rater/base.html' %} 
-    <body>
+{% block body_block %}
+<body>
         <h1>Index</h1>
         <a href="{% url 'rater:login' %}">Login</a>
         <a href="{% url 'rater:register' %}">register</a>
     </body>
 </html>
+
+{% endblock %}
