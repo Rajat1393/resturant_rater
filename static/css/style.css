@@ -1,0 +1,127 @@
+#header {
+    border-radius: 0px;
+    margin-bottom: 0px;
+    background-image: linear-gradient(
+        rgba(12, 73, 8, 0.548), 
+        rgba(59, 2, 2, 0.582)
+      ), url("../images/header.jpeg") ;
+    background-position: left;
+    background-size: cover;
+    padding-right: 0px;
+    padding-left: 0px;
+    max-width: 1720px;
+}
+
+.navbar {
+    box-shadow: 0 3px 18px rgba(33, 21, 138, 0.11);
+}
+
+.intro-box {
+    border-radius: 15px;
+    margin-bottom: 15px;
+    transition: all .5s ease-out;
+    padding: 15px 15px;
+    text-align: center;
+    background-size: cover;
+    background-color: rgba(82, 63, 56, 0.055);
+}
+
+.navright {
+    text-align: right;
+}
+
+.intro-box:hover {
+    background: rgba(82, 63, 56, 0.295);
+    box-shadow: 0px 22px 22px rgba(0, 0, 0, 0.151);
+
+}
+
+.intro-line {
+    width: 20px;
+    height: 6px;
+    border-radius: 3px;
+    margin: 10px auto;
+    transition: all .5s ease;
+}
+
+.intro-box:hover .intro-line {
+    width: 40px;
+}
+
+#header2{
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    max-width: 1720px;
+
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 0px;
+    margin-left: 0px;
+    max-width: 1720px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    margin-block-start: 1em;
+    margin-block-end: 0em;
+}
+
+.input-group {
+    padding-right: 250px;
+    padding-left: 250px;
+}
+
+.button {
+    border-color: aliceblue;
+}
+
+.icon {
+    color: transparent;
+}
+
+.imagepart{
+    background-image: url("../../media/1.jpeg") ;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.imagepart2{
+    background-image: url("../../media/2.jpeg") ;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.imagepart3{
+    background-image: url("../../media/3.jpeg") ;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.imagepart4{
+    background-image: url("../../media/4.jpeg") ;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.imagepart5{
+    background-image: url("../../media/5.jpeg") ;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.imagepart6{
+    background-image: url("../../media/6.jpeg") ;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.checked {
+    color: orange;
+  }

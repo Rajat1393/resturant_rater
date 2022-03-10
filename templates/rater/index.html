@@ -1,68 +1,142 @@
+<!DOCTYPE html>
+
 {% extends 'rater/base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
     Homepage
 {% endblock %}
+<!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<!-- Custom styles for this template -->
+<link href="https://getbootstrap.com/docs/4.2/examples/dashboard/dashboard.css" rel="stylesheet">
+<!-- use our own css file -->
+<link rel="icon shortcut" href="./img/favicon.ico">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+    integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
 
 {% block body_block %}
+<header id="header" class="jumbotron text-center text-white bg-dark">
+    <div class="container">
+        <br>
+        <br>
+        <h1>Restaurant Rating</h1>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter restaurant name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Search
+                </button>
+            </div>
+          </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <section id="introSection" class="py-5">
+        <div class="container">
+            <!-- 修正排版為三項排一排 -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="intro-box">
+                        <div class="imagepart">
+                            <div class="icon py-5">
+                                <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-secondary">Restaurant 1</h3>
+                        <div class="intro-line bg-primary"></div>
+                        <p>Famous for the food and the service.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro-box">
+                        <div class="imagepart2">
+                            <div class="icon py-5">
+                                <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-secondary">Restaurant 2</h3>
+                        <div class="intro-line bg-primary"></div>
+                        <p>Famous for the food and the service.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro-box">
+                        <div class="imagepart3">
+                            <div class="icon py-5">
+                                <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-secondary">Restaurant 3</h3>
+                        <div class="intro-line bg-primary"></div>
+                        <p>Famous for the food and the service.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="intro-box">
+                        <div class="imagepart4">
+                            <div class="icon py-5">
+                                <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-secondary">Restaurant 4</h3>
+                        <div class="intro-line bg-primary"></div>
+                        <p>Famous for the food and the service.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro-box">
+                        <div class="imagepart5">
+                            <div class="icon py-5">
+                                <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-secondary">Restaurant 5</h3>
+                        <div class="intro-line bg-primary"></div>
+                        <p>Famous for the food and the service.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro-box">
+                        <div class="imagepart6">
+                            <div class="icon py-5">
+                                <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-secondary">Restaurant 6</h3>
+                        <div class="intro-line bg-primary"></div>
+                        <p>Famous for the food and the service.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</div>
+
 <div class="jumbotron p-4">
     <div class="container">
-        <h1 class="jumbotron-heading">This is Restaurant Rater</h1>
+        <h5 class="jumbotron-heading">This is Restaurant Rater</h5>
         <div>
-            <h2 class="h2">
+            <h6 class="h6">
             {% if user.is_authenticated %}
-                Hello {{ user.username }}!
+                Hello {{ user.username }} , please click a restaurant page to write a reivew!
             {% else %}
-                hey there! Please log in/sign up!
+                hey there! Please log in/sign up if you want to write reivews!
             {% endif %}
-            </h2>
+            </h6>
             <strong>{{ boldmessage }}</strong>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card mb-6">
-                <div class="card-body">
-                    <h2>Most Liked Restaurant Categories</h2>
-                    <p class="card-text">
-                    {% if categories %}
-                    <ul class="list-group">
-                    {% for category in categories %}
-                        <li class="list-group-item"><a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a></li>
-                    {% endfor %}
-                    </ul>
-                    {% else %}
-                    <strong>There are no categories present.</strong>
-                    {% endif %}
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="card mb-6">
-                <div class="card-body">
-                    <h2>Most Viewed Restaurant Pages</h2>
-                    <p class="card-text">
-                    {% if pages %}
-                    <ul class="list-group">
-                    {% for page in pages %}
-                        <li class="list-group-item"><a href="{{ page.url }}">{{ page.title }}</a></li class="list-group-item">
-                    {% endfor %}
-                    </ul>
-                    {% else %}
-                    <strong>There are no pages present.</strong>
-                    {% endif %}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
 {% endblock %}

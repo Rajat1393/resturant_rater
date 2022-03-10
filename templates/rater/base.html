@@ -1,67 +1,67 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 
 <html lang="en">
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
-    <title>
-        Rango - {% block title_block %}How to Tango with Django!{% endblock %}
-    </title>
-    
-    <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    
-    <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.2/examples/dashboard/dashboard.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v3.8.5">
+        <title>
+            Restaurant - {% block title_block %}How to Tango with Django!{% endblock %}
+        </title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+        <!-- Custom styles for this template -->
+        <link href="https://getbootstrap.com/docs/4.2/examples/dashboard/dashboard.css" rel="stylesheet">
+        <!-- use our own css file -->
+        <link rel="icon shortcut" href="./img/favicon.ico">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+            integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+
     </head>
     
     <body>
-        <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark p-0">
-                <a class="navbar-brand p-2" href="{% url 'rater:index' %}">Rango</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'rater:index' %}">Home</a></li>
-                        {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'rater:logout' %}?next=/rater/">Logout</a></li>
-                        {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'rater:register' %}">Register Here</a></li>
-                        <li class="nav-item "><a class="nav-link" href="{% url 'rater:login' %}">Login</a></li>
-                        {% endif %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'rater:contactus' %}">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        
-        <div class="container-fluid">
-            <div class="row">
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                    {% block sidebar_block %}
-                    {% endblock %}
-                    </div>
-                </nav>
-                
-                <main role="main" class="col-md-9  ml-sm-auto col-lg-10 px-4">		
-                    {% block body_block %}{% endblock %}
-                    
-                    <!-- FOOTER -->
-                    <footer>
-                        <p class="float-right"><a href="#">Back to top</a></p>
-                        <p>&copy; 2020 Restaurant rater &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-                    </footer>
-                </main>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark p-0">
+            <a class="navbar-brand p-2" href="{% url 'rater:index' %}">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'rater:logout' %}?next=/rater/">Logout</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'rater:register' %}">Register Here</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'rater:login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
             </div>
-        </div>
-        
+        </nav>
+            
+        <header>
+            <div id= "header2" class="container">
+                {% block body_block %}{% endblock %}
+                
+                <!-- FOOTER -->
+                <footer>
+                    <p class="float-right"><a href="#">Back to top</a></p>
+                </footer>
+            </div>
+            <div id= "header2" class="container text-center text-white bg-dark">
+                <br>
+                <div class="icon text-primary py-3">
+                    <a href="{% url 'rater:contactus' %}" class = "h4">Contact Us</a>
+                </div>
+                <p class = "text-right">&copy; 2020 Restaurant rater</p>
+            </div>
+        </header>
+
         <!-- Bootstrap core JavaScript -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -57,3 +57,6 @@ def user_logout(request):
 
 def contactus(request):
     return render(request, 'rater/contactus.html')
+
+def rating(request):
+    return render(request, 'rater/rating.html')
