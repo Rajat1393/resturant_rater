@@ -1,5 +1,6 @@
 from multiprocessing import context
 from pickle import FALSE, TRUE
+from unicodedata import name
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.http import HttpResponse
@@ -7,7 +8,10 @@ from datetime import datetime
 from rater.forms import UserForm,UserProfileForm
 from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+import requests
+from rater.models import Restaurant, Review
+from datetime import datetime
+from django.contrib.auth.models import User
 
 def index(request):
     return render(request, 'rater/index.html')
@@ -60,3 +64,37 @@ def contactus(request):
 
 def rating(request):
     return render(request, 'rater/rating.html')
+
+def add_review(request):
+    try:
+        restaurant = Restaurant.objects.get(googleplaceid = 'ChIJiwmMvytEiEgRviOImT1RAdU') 
+    except Restaurant.DoesNotExist:
+        restaurant = None
+    user = user
+    price = int(request.POST['price'].strip())
+    quality = int(request.POST['quality'].strip())
+    atmosphere = int(request.POST['atmosphere'].strip())
+    review = request.POST['review'].strip()
+    ratings = int((price + quality + atmosphere)/3)
+    new_review = Review(time = datetime.now(),comments =review,ratings = ratings,restaurant = restaurant,user = user)
+    new_review.save()
+
+def search(request):
+    query = request.POST['query'].strip()
+    getplaceid = requests.get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" +query.strip() + "&inputtype=textquery&locationbias=circle:3000@55.8642° N, 4.2518° W &key=AIzaSyAEGrpbyqVAyF1OS_G74NJtdazbOwiHLf0")
+    place = getplaceid.json()
+    eatery =place['candidates'][0]['place_id']
+    response = requests.get('https://maps.googleapis.com/maps/api/place/details/json?place_id='+ eatery+'&fields=formatted_address,name,formatted_phone_number,opening_hours/weekday_text,types&key=AIzaSyAEGrpbyqVAyF1OS_G74NJtdazbOwiHLf0')
+    geodata = response.json()
+    contextdict = {}
+    contextdict['name'] = geodata['result']['name']
+    contextdict['phone'] = geodata['result']['formatted_phone_number']
+    contextdict['address'] = geodata['result']['formatted_address']
+    dbrestuarant = Restaurant.objects.get(name = eatery.strip())
+    if(not dbrestuarant):
+        restaurant = Restaurant(location = geodata['result']['formatted_address'],name = geodata['result']['name'],description = 'food, drinks',phoneno = geodata['result']['formatted_phone_number'],googleplaceid = eatery.strip())
+        restaurant.save()
+    # return your overview page
+    return render(request, 'rater/google.html', context=contextdict)
+
+
