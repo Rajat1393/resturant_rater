@@ -98,3 +98,8 @@ def search(request):
     return render(request, 'rater/google.html', context=contextdict)
 
 
+def overview(request):
+    return render(request, 'rater/overview.html')
+
+def redirectRating(request):
+    return render(request,'rater/rating.html')

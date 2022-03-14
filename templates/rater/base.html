@@ -23,6 +23,7 @@
             integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
 
+        {% block style %}{% endblock %}
     </head>
     
     <body>
@@ -58,15 +59,20 @@
                 <div class="icon text-primary py-3">
                     <a href="{% url 'rater:contactus' %}" class = "h4">Contact Us</a>
                 </div>
-                <p class = "text-right">&copy; 2020 Restaurant rater</p>
+                <p class = "text-right">&copy; 2022 Restaurant rater</p>
             </div>
         </header>
 
         <!-- Bootstrap core JavaScript -->
         <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.2/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="https://getbootstrap.com/docs/4.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
         <script src="https://getbootstrap.com/docs/4.2/examples/dashboard/dashboard.js"></script>
+        
+        {% block javascript %}{% endblock %}
+        
+
     </body>
 </html>

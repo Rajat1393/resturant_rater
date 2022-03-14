@@ -23,6 +23,7 @@ class Restaurant(models.Model):
         return str(self.name)
 
 class Review(models.Model):
+    '''
     time = models.DateTimeField()
     comments = models.CharField(max_length=300,blank=True)
     ratings = models.IntegerField(default=5)
@@ -30,6 +31,6 @@ class Review(models.Model):
     user = models.ForeignKey(User)
     def __str__(self): 
         return str(self.ratings)
-
+'''
 
 

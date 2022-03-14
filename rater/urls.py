@@ -10,6 +10,10 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
     path('contactus/', views.contactus, name='contactus'),
-    path('rating', views.rating, name='rating')
+    path('rating/', views.rating, name='rating'),
+    path('search/', views.search, name='search'),
+    path('overview/', views.overview, name='overview'),
+    path('redirectRating/',views.redirectRating,name='redirectRating'),
+
 ]
 
