@@ -1,0 +1,70 @@
+.frame {
+    width: 1200px;
+    margin: 3rem;
+}
+
+.containerStar {
+    width: 500px;
+    margin: 2rem;
+    display: inline;
+    float: left;
+    height: 300px;
+}
+
+.containImag {
+    width: 600px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem!important;
+    /* background-image: url("../images/header.jpeg"); */
+    border-radius: .25rem!important;
+    height: 300px;
+    display: inline;
+    /* position: fixed; */
+    float: left;
+}
+
+.imagesRes {
+    width: 100%;
+    height: 100%;
+}
+
+.baseInfo {
+    display: block;
+}
+
+.review_post {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5rem!important;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    position: relative!important;
+    border-radius: .25rem!important;
+    border: 1px solid #dee2e6!important;
+}
+
+.comment {
+    margin: 1rem;
+}
+
+.btnSatr {
+    color: rgb(255, 255, 255);
+    margin: 1rem;
+    margin-bottom: 0px;
+    border-radius: .25rem!important;
+    background-color: hsl(118deg 84% 29% / 86%);
+    border-color: hsl(118deg 84% 29% / 86%);
+}
+
+.btnAddReview {
+    color: rgb(255, 255, 255);
+    border-radius: .25rem!important;
+    background-color: rgba(245, 83, 83, 0.692);
+    padding: 10px;
+}
+
+.h4,
+h4 {
+    font-size: 1.5rem;
+    margin: 1rem;
+}
