@@ -1,78 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 {% load staticfiles %}
 
-<html>
+{% block title_block %}
+{% endblock %}
+<html lang="en">
     <head>
-        <link href="{% static 'css/rating.css' %}" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+        <meta charset="utf-8">
+        <title>Star Rating</title>
+        <meta name="viewport" content="initial-scale=1,width=device-width">
+        <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://getbootstrap.com/docs/4.2/examples/dashboard/dashboard.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../static/css/rating.css">
 
+    </head>
     <body>
-        <span class="heading">User Rating</span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <p>4.1 average based on 254 reviews.</p>
-        <hr style="border:3px solid #f1f1f1">
-        
-        <div class="row">
-          <div class="side">
-            <div>5 star</div>
-          </div>
-          <div class="middle">
-            <div class="bar-container">
-              <div class="bar-5"></div>
+        <div class="h1">Give Restaurant Review</div>
+        <div class="h3">Price</div>
+        <x-star-rating value="0" number="5"></x-star-rating>
+        <div class="h3">Quality</div>
+        <x-star-rating value="0" number="5"></x-star-rating>
+        <div class="h3">Atmosphere</div>
+        <x-star-rating value="0" number="5"></x-star-rating>
+
+        <form>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1" class="h3">Write a reivew</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-          </div>
-          <div class="side right">
-            <div>150</div>
-          </div>
-          <div class="side">
-            <div>4 star</div>
-          </div>
-          <div class="middle">
-            <div class="bar-container">
-              <div class="bar-4"></div>
-            </div>
-          </div>
-          <div class="side right">
-            <div>63</div>
-          </div>
-          <div class="side">
-            <div>3 star</div>
-          </div>
-          <div class="middle">
-            <div class="bar-container">
-              <div class="bar-3"></div>
-            </div>
-          </div>
-          <div class="side right">
-            <div>15</div>
-          </div>
-          <div class="side">
-            <div>2 star</div>
-          </div>
-          <div class="middle">
-            <div class="bar-container">
-              <div class="bar-2"></div>
-            </div>
-          </div>
-          <div class="side right">
-            <div>6</div>
-          </div>
-          <div class="side">
-            <div>1 star</div>
-          </div>
-          <div class="middle">
-            <div class="bar-container">
-              <div class="bar-1"></div>
-            </div>
-          </div>
-          <div class="side right">
-            <div>20</div>
-          </div>
-        </div>
+          </form>
+        <button class="btn btn-secondary mb-2">Cancel</button>
+        <button type="submit" class="btn btn-primary mb-2">Add</button>
+
+        <script src="../../static/js/rating.js"></script>
     </body>
 </html>

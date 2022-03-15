@@ -125,3 +125,8 @@ p {
 .checked {
     color: orange;
   }
+
+@media (min-width: 1720px)
+.navbar-expand-md .navbar-toggler {
+    display: none;
+}
