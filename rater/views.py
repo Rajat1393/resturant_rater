@@ -115,10 +115,12 @@ def search(request):
     if(not dbrestuarant):
         restaurant = Restaurant(location = address,name = name,description = 'food, drinks',phoneno = phone,googleplaceid = eatery.strip())
         restaurant.save()
+        contextdict['reviewlist'] = []
     else:
         review_list = Review.objects.all().filter(restaurant = dbrestuarant)
         print(review_list)
-    contextdict['reviewlist'] = review_list
+        contextdict['reviewlist'] = review_list
+    
     return render(request, 'rater/overview.html', context=contextdict)
 
 
