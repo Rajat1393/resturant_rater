@@ -19,20 +19,25 @@
 
 {% block body_block %}
 <header id="header" class="jumbotron text-center text-white bg-dark">
+    <form class="form-inline" id="user-form" method="post" action="{% url 'rater:search' %}">
+        {% csrf_token %}
     <div class="container">
         <br>
         <br>
         <h1>Restaurant Rating</h1>
+        
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter restaurant name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input type="text" name="query" id="query" value="{{ query }}" class="form-control" placeholder="Enter restaurant name" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-paper-plane"></i>
                     Search
                 </button>
             </div>
-          </div>
+        </div>
+    
     </div>
+</form>
 </header>
 
 

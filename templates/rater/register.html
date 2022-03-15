@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-
+{% extends 'rater/base.html' %}
 {% load staticfiles %}
 
+{% block title_block %}
+    Register
+{% endblock %}
 
-<html>
-    <head>
-        <title>
-             Register
-        </title>
-        <link href="{% static 'css/login.css' %}" rel="stylesheet" type="text/css"/>
-        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+{% block style %}
+<link href="{% static 'css/login.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
 
-        <script src="{% static 'js/login.js' %}"></script>
-    </head>
-    <body>
+{% block body_block %}
         
         <div class="container">
             <div class="row">
@@ -30,24 +26,24 @@
                             <p class="required">
                                 <label class="required" for="id_username" >Username<span style="color: red;">*</span></label>
                                 <input class="form-control" id="id_username" maxlength="30" name="username" type="text" />
-                                <span class="helptext" id="helptextUser" hidden>
+                                <span class="helptext" id="helptextUser">
                                    * Required field.
                                 </span>
                             </p>
                             <p class="required">
                                 <label class="required" for="id_email">Email<span style="color: red;">*&nbsp; &nbsp; &nbsp; &nbsp; </span></label>
                                 <input class="form-control" id="id_email" name="email" type="email" />
-                                <span class="helptext" id="helptextEmail" hidden>
+                                <span class="helptext" id="helptextEmail">
                                     * Required field.
                                 </span>
-                                <span class="helptext" id="helptextEmail2" hidden>
+                                <span class="helptext" id="helptextEmail2">
                                     Enter the correct email format. 
                                 </span>
                             </p>
                             <p class="required">
                                 <label class="required" for="id_password1">Password<span style="color: red;">*</span></label>
                                 <input class="form-control" id="id_password1" name="password" type="password" />
-                                <span class="helptext" id="helptextPassword1" hidden>
+                                <span class="helptext" id="helptextPassword1">
                                     * Required field.
                                 </span>
                                 
@@ -55,10 +51,10 @@
                             <p class="required">
                                 <label class="required" for="id_password2">Password confirmation<span style="color: red;">*</span></label>
                                 <input class="form-control" id="id_password2" name="password2" type="password" />
-                                <span class="helptext" id="helptextPassword2" hidden>
+                                <span class="helptext" id="helptextPassword2">
                                     * Required field.
                                 </span>
-                                <span class="helptext" id="helptextPassword3" hidden>
+                                <span class="helptext" id="helptextPassword3">
                                     Enter the same password as before, for verification.
                                 </span>
                             </p>
@@ -70,23 +66,8 @@
                 </div>
             </div>
         </div>
-
-
-        <!--
-        <h1>Register for Rango</h1>
-        {% if registered %}
-        Rango says: <strong>thank you for registering!</strong>
-        <a href="{% url 'rater:index' %}">Return to the homepage.</a><br />
-        {% else %}
-        Rango says: <strong>register here!</strong><br />
-        <form id="user_form" method="post" action="{% url 'rater:register' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-
-        <input type="submit" name="submit" value="Register" />
-        </form>
-        {% endif %}
-        -->
-    </body>
-</html>
+        {% block javascript %}
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/login.js' %}" crossorigin="anonymous"></script>
+        {% endblock %}
+{% endblock %}

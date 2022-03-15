@@ -1,13 +1,16 @@
-<!DOCTYPE html>
+{% extends 'rater/base.html' %}
 {% load staticfiles %}
 
-<html>
-    <head>
-        <title>Login</title>
-        <link href="{% static 'css/login.css' %}" rel="stylesheet" type="text/css"/>
-        <script src="{% static 'js/login.js' %}"></script>
-    </head>
-    <body>
+{% block title_block %}
+    Login
+{% endblock %}
+
+{% block style %}
+<link href="{% static 'css/login.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body_block %}
+
         <!--<h1>Login</h1>-->
         <div class="container">
             <form class="form-signin" id="login_form" method="post" action="{% url 'rater:login' %}">
@@ -22,6 +25,4 @@
         <button type="submit" class="btn">SignIn</button>
         </div>
         
-</form>
-    </body>
-</html>
+{% endblock %}
