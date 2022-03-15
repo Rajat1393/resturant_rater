@@ -54,31 +54,35 @@
             </div>
             <div class="baseInfo">
                 
-                <h1><!--{{name}}-->"Reataurant Name"</h1>
+                <h1>{{name}}<!--"Reataurant Name"--></h1>
 
-                <h4 id="restaurantId" hidden><!--{{restaurantId}}-->1</h4>
-                <h4><!--{{phoneNumber}}-->"Phone Number"</h4>
-                <h4><!--{{address}}-->"Address"</h4>
+                <h4 id="restaurantId" hidden>{{googleplaceid}}</h4>
+                <h4>{{phone}}</h4>
+                <h4>{{address}}</h4>
+                {% if user.is_authenticated %}
                 <botton  type="submit" class=" btn btnAddReview" id="addReview"> <i class="fas fa-paper-plane"></i> Add Review</botton>
+                {% else %}
+                <botton  type="submit" class=" btn btnAddReview" id="addReview1"> <i class="fas fa-paper-plane"></i> Login First then Add Review</botton>
+                {% endif %}
             </div>
             <hr>
             <!--******** just Simply write in the template and enter the data as it becomes available.-->
-            {% comment %} {% for review in reviews %} {% endcomment %}
+            {% for review in reviewlist %}
             <div class="review_post">
-                <h4><!--{{userName}}-->"userName(people who post this review)"</h3>
+                {% comment %} <h4>"userName"</h3>  {% endcomment %}
+                <h4>{{review.user.username}}</h3>
                 <div class="commentStar"> 
                     <button class="btnSatr">
-                        {% comment %} {{ review.ratings }} {% endcomment %} 4.5⭐️
-                       {% comment %} <img src="{% static 'images/star.svg' %}" /}> {% endcomment %}
+                        {{ review.ratings }}⭐️ 
                     </button> 
                 </div>
                 <div class="comment">
-                    {% comment %} {{ review.comments }} {% endcomment %}
+                    {{ review.comments }}
                     comments......
                 </div>
             </div>
             <hr>
-            {% comment %} {% endfor %} {% endcomment %}
+            {% endfor %}
         </div>
         {% block javascript %}
         <script src="{% static 'js/jquery-3.6.0.min.js' %}" crossorigin="anonymous"></script>

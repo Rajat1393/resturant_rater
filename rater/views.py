@@ -66,18 +66,35 @@ def rating(request):
     return render(request, 'rater/rating.html')
 
 def add_review(request):
+    googleplaceid = request.POST['googleplaceid'].strip()
     try:
-        restaurant = Restaurant.objects.get(googleplaceid = 'ChIJiwmMvytEiEgRviOImT1RAdU') 
+        restaurant = Restaurant.objects.get(googleplaceid = googleplaceid) 
     except Restaurant.DoesNotExist:
         restaurant = None
-    user = user
-    price = int(request.POST['price'].strip())
-    quality = int(request.POST['quality'].strip())
-    atmosphere = int(request.POST['atmosphere'].strip())
-    review = request.POST['review'].strip()
+    user = request.user
+    print(user)
+    price = 3
+    quality = 3
+    atmosphere = 3
+    review = ''
+    # price = int(request.POST['price'].strip())
+    # quality = int(request.POST['quality'].strip())
+    # atmosphere = int(request.POST['atmosphere'].strip())
+    # review = request.POST['review'].strip()
     ratings = int((price + quality + atmosphere)/3)
     new_review = Review(time = datetime.now(),comments =review,ratings = ratings,restaurant = restaurant,user = user)
     new_review.save()
+    contextdict = {}
+    contextdict['name'] = restaurant.name
+    contextdict['phone'] = restaurant.phoneno
+    contextdict['address'] = restaurant.location
+    contextdict['googleplaceid'] = restaurant.googleplaceid
+
+    review_list = Review.objects.all().filter(restaurant = restaurant)
+    print(review_list)
+    contextdict['reviewlist'] = review_list
+    return render(request, 'rater/overview.html', context=contextdict)
+
 
 def search(request):
     query = request.POST['query'].strip()
@@ -87,15 +104,22 @@ def search(request):
     response = requests.get('https://maps.googleapis.com/maps/api/place/details/json?place_id='+ eatery+'&fields=formatted_address,name,formatted_phone_number,opening_hours/weekday_text,types&key=AIzaSyAEGrpbyqVAyF1OS_G74NJtdazbOwiHLf0')
     geodata = response.json()
     contextdict = {}
-    contextdict['name'] = geodata['result']['name']
-    contextdict['phone'] = geodata['result']['formatted_phone_number']
-    contextdict['address'] = geodata['result']['formatted_address']
-    dbrestuarant = Restaurant.objects.get(name = eatery.strip())
+    address = geodata['result']['formatted_address']
+    phone = geodata['result']['formatted_phone_number']
+    name = geodata['result']['name']
+    contextdict['name'] = name
+    contextdict['phone'] = phone
+    contextdict['address'] = address
+    contextdict['googleplaceid'] = eatery.strip()
+    dbrestuarant = Restaurant.objects.filter(googleplaceid = eatery.strip()).exists()
     if(not dbrestuarant):
-        restaurant = Restaurant(location = geodata['result']['formatted_address'],name = geodata['result']['name'],description = 'food, drinks',phoneno = geodata['result']['formatted_phone_number'],googleplaceid = eatery.strip())
+        restaurant = Restaurant(location = address,name = name,description = 'food, drinks',phoneno = phone,googleplaceid = eatery.strip())
         restaurant.save()
-    # return your overview page
-    return render(request, 'rater/google.html', context=contextdict)
+    else:
+        review_list = Review.objects.all().filter(restaurant = dbrestuarant)
+        print(review_list)
+    contextdict['reviewlist'] = review_list
+    return render(request, 'rater/overview.html', context=contextdict)
 
 
 def overview(request):

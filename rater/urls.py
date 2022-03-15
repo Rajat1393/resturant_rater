@@ -14,6 +14,7 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('overview/', views.overview, name='overview'),
     path('redirectRating/',views.redirectRating,name='redirectRating'),
+    path('add_review/',views.add_review,name='add_review'),
 
 ]
 

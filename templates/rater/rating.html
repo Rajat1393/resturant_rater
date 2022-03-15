@@ -1,20 +1,15 @@
-<!doctype html>
+{% extends 'rater/base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
+    Register
 {% endblock %}
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Star Rating</title>
-        <meta name="viewport" content="initial-scale=1,width=device-width">
-        <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link href="https://getbootstrap.com/docs/4.2/examples/dashboard/dashboard.css" rel="stylesheet">
-        <link rel="stylesheet" href="../../static/css/rating.css">
- 
-    </head>
-    <body>
+
+{% block style %}
+<link href="{% static 'css/rating.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body_block %}
         <div class="h1">Give Restaurant Review</div>
         <div class="h3">Price</div>
         <x-star-rating value="0" number="5"></x-star-rating>
@@ -22,16 +17,25 @@
         <x-star-rating value="0" number="5"></x-star-rating>
         <div class="h3">Atmosphere</div>
         <x-star-rating value="0" number="5"></x-star-rating>
-
-        <form>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1" class="h3">Write a reivew</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-          </form>
-        <button class="btn btn-secondary mb-2">Cancel</button>
-        <button type="submit" class="btn btn-primary mb-2">Add</button>
-
-        <script src="../../static/js/rating.js"></script>
-    </body>
-</html>
+        <div>
+          <form class="form-signin" id = 'user-form' method="post" action="{% url 'rater:add_review' %}"  enctype="multipart/form-data">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="h3">Write a reivew</label>
+                <input id="writeReview" class="h3"></input>
+                <input id="googleplaceid" name="googleplaceid"></input>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            
+            <button class="btn btn-secondary mb-2">Cancel</button>
+            <button type="submit" class="btn btn-primary mb-2">Add</button>
+            </form>
+       </div>
+      
+        
+        {% block javascript %}
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/search.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/rating.js' %}" crossorigin="anonymous"></script>
+        {% endblock %}
+{% endblock %}
