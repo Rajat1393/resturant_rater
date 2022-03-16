@@ -28,7 +28,7 @@ SECRET_KEY = '4bqv!zmy$de8d#&jf8=v%rb8ld2t1vctl@8)28h(yfaiu=7(15'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['restaurantrateruofg.pythonanywhere.com']
+ALLOWED_HOSTS = ['restaurantrateruofg.pythonanywhere.com','127.0.0.1']
 
 LOGIN_URL = 'rango:login'
 '''
