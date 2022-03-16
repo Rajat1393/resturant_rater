@@ -88,37 +88,37 @@ p {
 }
 
 .imagepart {
-    background-image: url("/1.jpeg");
+    background-image: url("../../media/1.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
 .imagepart2 {
-    background-image: url("/2.jpeg");
+    background-image: url("../../media/2.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
 .imagepart3 {
-    background-image: url("/3.jpeg");
+    background-image: url("../../media/3.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
 .imagepart4 {
-    background-image: url("/4.jpeg");
+    background-image: url("../../media/4.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
 .imagepart5 {
-    background-image: url("/5.jpeg");
+    background-image: url("../../media/5.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
 .imagepart6 {
-    background-image: url("/6.jpeg");
+    background-image: url("../../media/6.jpeg");
     background-position: center;
     border-radius: 10px;
 }
