@@ -33,7 +33,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
                      {% if user.is_authenticated %}
-                    <button class="nav-item"><a class="nav-link" href="{% url 'rater:logout' %}?next=/rater/">Logout</a></button>
+                    <button class="btn"><a class="nav-link" href="{% url 'rater:logout' %}?next=/rater/">Logout</a></button>
                     <button class="nav-item"><a class="nav-link" href="{% url 'rater:getuserprofile' %}">profile</a></button>
                     {% else %}
                     <button class="nav-item"><a class="nav-link" href="{% url 'rater:register' %}">Register Here</a></button>

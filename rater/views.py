@@ -99,6 +99,14 @@ def add_review(request):
 
     review_list = Review.objects.all().filter(restaurant = restaurant)
     print(review_list)
+    if(len(review_list))>0:
+        rating = 0
+        for review in review_list:
+            rating = review.ratings + rating
+            rating = int(rating/len(review_list))
+        contextdict['rating'] = rating
+    else:
+        contextdict['rating'] = 0
     contextdict['reviewlist'] = review_list
     return render(request, 'rater/overview.html', context=contextdict)
 
@@ -123,10 +131,13 @@ def search(request):
         restaurant = Restaurant(location = address,name = name,description = 'food, drinks',phoneno = phone,googleplaceid = eatery.strip())
         restaurant.save()
         contextdict['reviewlist'] = []
+        contextdict['rating'] = 0
     else:
-        review_list = Review.objects.all().filter(restaurant = dbrestuarant)
-        print(review_list)
+        restaurant = Restaurant.objects.get(googleplaceid = eatery.strip())
+        print(restaurant)
+        review_list = Review.objects.all().filter(restaurant = restaurant)        
         contextdict['reviewlist'] = review_list
+        contextdict['rating'] = 5
     
     return render(request, 'rater/overview.html', context=contextdict)
 
