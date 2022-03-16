@@ -10,8 +10,9 @@
 {% endblock %}
 
 {% block body_block %}
-
-        <!--<h1>Login</h1>-->
+        <br>
+        <br>
+        <strong class="h1 text-center">Please Login</strong><br />
         <div class="container">
             <form class="form-signin" id="login_form" method="post" action="{% url 'rater:login' %}">
             {% csrf_token %}

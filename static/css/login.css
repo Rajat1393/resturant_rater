@@ -41,3 +41,8 @@ input[type=email] {
 .helptext {
     color: red;
 }
+
+.footer {
+    padding-top: 100px;
+    height: 100px;
+}

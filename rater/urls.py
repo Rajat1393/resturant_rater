@@ -15,6 +15,8 @@ urlpatterns = [
     path('overview/', views.overview, name='overview'),
     path('redirectRating/',views.redirectRating,name='redirectRating'),
     path('add_review/',views.add_review,name='add_review'),
+    path('getuserprofile/',views.getuserprofile,name='getuserprofile'),
+    path('updateuserprofile/',views.updateuserprofile,name='updateuserprofile'),
 
 ]
 

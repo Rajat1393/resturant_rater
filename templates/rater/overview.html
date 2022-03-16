@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card">
-                                <div class="card-body text-center"> <span class="myratings">4.5<!--{{rating}}--></span>
+                                <div class="card-body text-center"> <span class="myratings"><!--{{rating}}-->5</span>
                                     {% comment %} <h4 class="mt-1">Rate us</h4> {% endcomment %}
                                     <fieldset class="rating"> 
                                         <input type="radio" id="star5" name="rating" value="5" />
@@ -51,7 +51,9 @@
                     </div>
                 </div>   
                 {% comment %} ----------- star ----------- {% endcomment %}
+               
             </div>
+            
             <div class="baseInfo">
                 
                 <h1>{{name}}<!--"Reataurant Name"--></h1>
@@ -63,7 +65,7 @@
                 <botton  type="submit" class=" btn btnAddReview" id="addReview"> <i class="fas fa-paper-plane"></i> Add Review</botton>
                 {% else %}
                 <botton  type="submit" class=" btn btnAddReview" id="addReview1"> <i class="fas fa-paper-plane"></i> Login First then Add Review</botton>
-                {% endif %}
+                {% endif %} 
             </div>
             <hr>
             <!--******** just Simply write in the template and enter the data as it becomes available.-->

@@ -1,17 +1,19 @@
 from multiprocessing import context
 from pickle import FALSE, TRUE
+import profile
 from unicodedata import name
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.http import HttpResponse
 from datetime import datetime
-from rater.forms import UserForm,UserProfileForm
+from rater.forms import  UserForm,UserProfileForm
 from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.decorators import login_required
 import requests
-from rater.models import Restaurant, Review
+from rater.models import Restaurant, Review ,UserProfile
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.views import View
 
 def index(request):
     return render(request, 'rater/index.html')
@@ -21,13 +23,18 @@ def register(request):
 
     if request.method == 'POST':
         user_form = UserForm(request.POST)
-        #profile_form = UserProfileForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
 
-        if user_form.is_valid():# and profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             print("user:",user.password)
             user.set_password(user.password)
             user.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user     
+            profile.website = user.email 
+            profile.picture ="profile_images/profile.jpg"    
+            profile.save()
             registered = True
         else:
             print(user_form.errors)
@@ -129,3 +136,78 @@ def overview(request):
 
 def redirectRating(request):
     return render(request,'rater/rating.html')
+
+def getuserprofile(request):
+    user= request.user
+    profile = UserProfile.objects.get(user = user)
+    try:
+        reviews= Review.objects.all().filter(user = user)
+    except Review.DoesNotExist:
+        reviews = None
+    contextdict = {}
+    print(profile)
+    contextdict['profile'] = profile
+    contextdict['reviews'] = reviews
+    return render(request,'rater/profile.html',context=contextdict)
+
+
+# def updateuserprofile(request):
+#     user = request.user
+#     if request.method == 'POST':
+#         form = UserProfileForm(request.POST(),request.FILEDS)
+#         if form.is_valid():
+#             img = form.cleaned_data.get("image_field")
+#             print('-------')
+#             print(img)
+
+
+def updateuserprofile(request):
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+        print(user_profile)
+    except UserProfile.DoesNotExist:
+        return HttpResponse("invalid user_profile!")
+
+    if request.method == "POST":
+        update_profile_form = UserProfileForm(data=request.POST, instance=user_profile)
+        if update_profile_form.is_valid():
+            profile = update_profile_form.save(commit=False)
+            print(profile)
+            print('here')
+            if 'picture' in request.FILES:
+                print('in if')
+                profile.picture = request.FILES['picture']
+            profile.save()
+    
+    user= request.user
+    profile = UserProfile.objects.get(user = user)
+    try:
+        reviews= Review.objects.all().filter(user = user)
+    except Review.DoesNotExist:
+        reviews = None
+    contextdict = {}
+    print(profile)
+    contextdict['profile'] = profile
+    contextdict['reviews'] = reviews
+    return render(request,'rater/profile.html',context=contextdict)
+   
+# class RegisterProfileView(View):
+#     def get(self, request):
+#         form = UserProfileForm()
+#         context_dict = {'form': form}
+#         return render(request, 'rater/profile.html', context_dict)
+    
+#     def post(self, request):
+#         form = UserProfileForm(request.POST, request.FILES)
+
+#         if form.is_valid():
+#             user_profile = form.save(commit=False)
+#             user_profile.user = request.user
+#             user_profile.save()
+
+#             return redirect(reverse('rater:profile'))
+#         else:
+#             print(form.errors)
+        
+#         context_dict = {'form': form}
+#         return render(request, 'rater/profile.html', context_dict)

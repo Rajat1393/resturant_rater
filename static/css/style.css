@@ -1,10 +1,7 @@
 #header {
     border-radius: 0px;
     margin-bottom: 0px;
-    background-image: linear-gradient(
-        rgba(12, 73, 8, 0.548), 
-        rgba(59, 2, 2, 0.582)
-      ), url("../images/header.jpeg") ;
+    background-image: linear-gradient( rgba(12, 73, 8, 0.548), rgba(59, 2, 2, 0.582)), url("../images/header.jpeg");
     background-position: left;
     background-size: cover;
     padding-right: 0px;
@@ -33,7 +30,6 @@
 .intro-box:hover {
     background: rgba(82, 63, 56, 0.295);
     box-shadow: 0px 22px 22px rgba(0, 0, 0, 0.151);
-
 }
 
 .intro-line {
@@ -48,13 +44,12 @@
     width: 40px;
 }
 
-#header2{
+#header2 {
     margin-right: 0px;
     margin-left: 0px;
     padding-right: 0px;
     padding-left: 0px;
     max-width: 1720px;
-
 }
 
 .container {
@@ -86,47 +81,42 @@ p {
     color: transparent;
 }
 
-.imagepart{
-    background-image: url("../../media/1.jpeg") ;
+.imagepart {
+    background-image: url("../../media/1.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
-.imagepart2{
-    background-image: url("../../media/2.jpeg") ;
+.imagepart2 {
+    background-image: url("../../media/2.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
-.imagepart3{
-    background-image: url("../../media/3.jpeg") ;
+.imagepart3 {
+    background-image: url("../../media/3.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
-.imagepart4{
-    background-image: url("../../media/4.jpeg") ;
+.imagepart4 {
+    background-image: url("../../media/4.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
-.imagepart5{
-    background-image: url("../../media/5.jpeg") ;
+.imagepart5 {
+    background-image: url("../../media/5.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
-.imagepart6{
-    background-image: url("../../media/6.jpeg") ;
+.imagepart6 {
+    background-image: url("../../media/6.jpeg");
     background-position: center;
     border-radius: 10px;
 }
 
 .checked {
     color: orange;
-  }
-
-@media (min-width: 1720px)
-.navbar-expand-md .navbar-toggler {
-    display: none;
 }

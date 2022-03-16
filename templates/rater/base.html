@@ -32,36 +32,41 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    {% if user.is_authenticated %}
+                     {% if user.is_authenticated %}
+                    <button class="nav-item"><a class="nav-link" href="{% url 'rater:logout' %}?next=/rater/">Logout</a></button>
+                    <button class="nav-item"><a class="nav-link" href="{% url 'rater:getuserprofile' %}">profile</a></button>
+                    {% else %}
+                    <button class="nav-item"><a class="nav-link" href="{% url 'rater:register' %}">Register Here</a></button>
+                    <button class="nav-item"><a class="nav-link" href="{% url 'rater:login' %}">Login</a></button>
+                    {% endif %}
+            {% comment %} <div class="collapse navbar-collapse" id="navbarCollapse"> {% endcomment %}
+                {% comment %} <ul class="navbar-nav mr-auto"> {% endcomment %}
+                    {% comment %} {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'rater:logout' %}?next=/rater/">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'rater:getuserprofile' %}">profile</a></li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'rater:register' %}">Register Here</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'rater:login' %}">Login</a></li>
-                    {% endif %}
-                </ul>
-            </div>
+                    {% endif %} {% endcomment %}
+                {% comment %} </ul> {% endcomment %}
+            {% comment %} </div> {% endcomment %}
         </nav>
             
-        <header>
-            <div id= "header2" class="container">
+        <main>
+            <div id= "header2">
                 {% block body_block %}{% endblock %}
-                
-                <!-- FOOTER -->
-                <footer>
-                    <p class="float-right"><a href="#">Back to top</a></p>
-                </footer>
             </div>
-            <div id= "header2" class="container text-center text-white bg-dark">
-                <br>
-                <div class="icon text-primary py-3">
+        </main>
+ 
+        <footer class="footer">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <div id= "header2" class="text-center text-white bg-dark">
+                <div class="icon text-primary py-1">
                     <a href="{% url 'rater:contactus' %}" class = "h4">Contact Us</a>
                 </div>
-                <p class = "text-right">&copy; 2022 Restaurant rater</p>
+            <p class = "text-right">&copy; 2022 Restaurant rater</p>
             </div>
-        </header>
+        </footer>
 
         <!-- Bootstrap core JavaScript -->
         <!-- Placed at the end of the document so the pages load faster -->

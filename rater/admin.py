@@ -4,4 +4,5 @@ from rater.models import UserProfile,Restaurant,Review
 
 admin.site.register(Restaurant)
 admin.site.register(Review)
+admin.site.register(UserProfile)
 
