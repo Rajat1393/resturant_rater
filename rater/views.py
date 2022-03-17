@@ -99,10 +99,10 @@ def add_review(request):
         rating = 0
         for review in review_list:
             rating = review.ratings + rating
-            rating = int(rating/len(review_list))
+        rating = int(rating/len(review_list))
         contextdict['rating'] = rating
     else:
-        contextdict['rating'] = 0
+        contextdict['rating'] = 5
     contextdict['reviewlist'] = review_list
     return render(request, 'rater/overview.html', context=contextdict)
 
@@ -133,7 +133,14 @@ def search(request):
         print(restaurant)
         review_list = Review.objects.all().filter(restaurant = restaurant)        
         contextdict['reviewlist'] = review_list
-        contextdict['rating'] = 5
+        if(len(review_list))>0:
+             rating = 0
+             for review in review_list:
+                 rating = review.ratings + rating
+             rating = int(rating/len(review_list))
+             contextdict['rating'] = rating
+        else:
+             contextdict['rating'] = 5     
     
     return render(request, 'rater/overview.html', context=contextdict)
 
