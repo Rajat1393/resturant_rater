@@ -49,7 +49,7 @@
 
 .btnSatr {
     color: rgb(255, 255, 255);
-    margin: 1rem;
+    margin-left: 1rem;
     margin-bottom: 0px;
     border-radius: .25rem!important;
     background-color: hsl(118deg 84% 29% / 86%);
@@ -61,6 +61,8 @@
     border-radius: .25rem!important;
     background-color: rgba(245, 83, 83, 0.692);
     padding: 10px;
+    margin: 20px;
+    margin-left: 65px;
 }
 
 .h4,

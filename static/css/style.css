@@ -126,3 +126,22 @@ p {
 .checked {
     color: orange;
 }
+
+.mainContent {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.footerContent {
+    height: 50px;
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-right: 1rem;
+    line-height: inherit;
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: inset -1px 0 0 rgb(0 0 0 / 0%);
+}

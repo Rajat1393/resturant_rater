@@ -79,15 +79,11 @@ def add_review(request):
     except Restaurant.DoesNotExist:
         restaurant = None
     user = request.user
-    print(user)
-    price = 3
-    quality = 3
-    atmosphere = 3
-    review = ''
-    # price = int(request.POST['price'].strip())
-    # quality = int(request.POST['quality'].strip())
-    # atmosphere = int(request.POST['atmosphere'].strip())
-    # review = request.POST['review'].strip()
+
+    price = int(request.POST['price'].strip())
+    quality = int(request.POST['quality'].strip())
+    atmosphere = int(request.POST['atmosphere'].strip())
+    review = request.POST['review'].strip()
     ratings = int((price + quality + atmosphere)/3)
     new_review = Review(time = datetime.now(),comments =review,ratings = ratings,restaurant = restaurant,user = user)
     new_review.save()
@@ -202,23 +198,3 @@ def updateuserprofile(request):
     contextdict['reviews'] = reviews
     return render(request,'rater/profile.html',context=contextdict)
    
-# class RegisterProfileView(View):
-#     def get(self, request):
-#         form = UserProfileForm()
-#         context_dict = {'form': form}
-#         return render(request, 'rater/profile.html', context_dict)
-    
-#     def post(self, request):
-#         form = UserProfileForm(request.POST, request.FILES)
-
-#         if form.is_valid():
-#             user_profile = form.save(commit=False)
-#             user_profile.user = request.user
-#             user_profile.save()
-
-#             return redirect(reverse('rater:profile'))
-#         else:
-#             print(form.errors)
-        
-#         context_dict = {'form': form}
-#         return render(request, 'rater/profile.html', context_dict)

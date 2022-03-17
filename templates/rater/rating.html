@@ -6,29 +6,44 @@
 {% endblock %}
 
 {% block style %}
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <link href="{% static 'css/rating.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block body_block %}
-        <div class="h1">Give Restaurant Review</div>
-        <div class="h3">Price</div>
-        <x-star-rating value="0" number="5"></x-star-rating>
-        <div class="h3">Quality</div>
-        <x-star-rating value="0" number="5"></x-star-rating>
-        <div class="h3">Atmosphere</div>
-        <x-star-rating value="0" number="5"></x-star-rating>
+          <header id="header" class="jumbotron text-center text-white bg-dark">
+                  <br>
+                  <br>
+                  <h1>Write Restaurant Review</h1>
+              </div>
+          </header>
+  
+  
+          <div class="h4 jumbotron p-1">Price:
+              <x-star-rating value="0" number="5" id="getPrice"></x-star-rating>
+          </div>
+          <div class="h4 jumbotron p-1">Quality:
+              <x-star-rating value="0" number="5" id="getQuality"></x-star-rating>
+          </div>
+          <div class="h4 jumbotron p-1">Atmosphere:
+              <x-star-rating value="0" number="5" id="getAtmosphere"></x-star-rating>
+          </div>
         <div>
-          <form class="form-signin" id = 'user-form' method="post" action="{% url 'rater:add_review' %}"  enctype="multipart/form-data">
+          <form class="form-signin jumbotron" id = 'user-form' method="post" action="{% url 'rater:add_review' %}"  enctype="multipart/form-data">
             {% csrf_token %}
               <div class="form-group">
-                <label for="exampleFormControlTextarea1" class="h3">Write a reivew</label>
-                <input id="writeReview" class="h3"></input>
-                <input id="googleplaceid" name="googleplaceid"></input>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="exampleFormControlTextarea1" class="h3">Write a Reivew</label>
+                <input id="googleplaceid" name="googleplaceid" hidden></input>
+                <textarea class="form-control" name="review" id="review" rows="3"></textarea>
+              </div>
+              <div>
+                <input type="text" value="0" name="price" id="price" hidden></input>
+                <input type="text" value="0" name="quality" id="quality" hidden></input>
+                <input type="text" value="0" name="atmosphere" id="atmosphere" hidden></input>
               </div>
             
-            <button class="btn btn-secondary mb-2">Cancel</button>
             <button type="submit" class="btn btn-primary mb-2">Add</button>
+            <button class="btn btn-secondary mb-2">Cancel</button>
             </form>
        </div>
       

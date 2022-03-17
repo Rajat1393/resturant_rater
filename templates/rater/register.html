@@ -12,12 +12,11 @@
 {% block body_block %}
         
         <div class="container">
-            <div class="row">
                 <div class="form-group" >
                     {% if registered %}
-                    <strong style="color: blue;">Thank you for registering!</strong><br/>
+                    <strong class="h1 text-center" >Thank you for registering!</strong><br/>
                     {% else %}
-                    <strong>register here!</strong><br />
+                    <strong class="h1 text-center">Register Here!</strong><br />
                     {%  endif %}
                     
                     <form role="form"  method="post" action="{% url 'rater:register' %}" >
@@ -64,7 +63,6 @@
                     </form>
                     
                 </div>
-            </div>
         </div>
         {% block javascript %}
         <script src="{% static 'js/jquery-3.6.0.min.js' %}" crossorigin="anonymous"></script>

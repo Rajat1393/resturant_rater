@@ -6,59 +6,48 @@
 {% endblock %}
 
 {% block style %}
+<link href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="{% static 'css/profile.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block body_block %}
-
 		<section class="section">
-                <form method="POST" action="{% url 'rater:updateuserprofile' %}" enctype="multipart/form-data">
+                  <form method="POST" action="{% url 'rater:updateuserprofile' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ update_profile_form.as_p }}
                     <img src="{{ user.userprofile.picture.url }}" width="240" alt = "no image"/>
                     <br />
-                    <input type="file" name="picture" accept="image/*">
-                <br>
-                    <input type="SUBMIT" name="submit" value="Update"/>
+                    <div class="custom-file">
+                        <input type="file" name="picture" class="custom-file-input" accept="image/*" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+
+                    {% comment %} <input type="file" name="picture" class="form-control" accept="image/*" ></input> {% endcomment %}
+
+                    
+                    <input type="submit" name="submit" class="btn btn-secondary" value="Update"/>
                   </form>
-			
 
-
-
-
-
-
-
-
-
-
-			
 			<div class="center">
 				<form id="user_form" method="post" action="{% url 'rater:getuserprofile' %}" enctype="multipart/form-data">
 					<div>
+                        <p>
 						<label for="male">Email address:</label>
 						{{user.email}} 
+                        </p>
 					</div>
 					<div>
+                        <p>
 						<label for="male">Username:</label>
-						{{ user.username }} 
+						{{ user.username }}
+                        </p> 
 					</div>
-					
-           
-                {% comment %} <div class="commentStar"> 
-					
-                    <button class="btnSatr">{{rating}}<i class="fas fa-paper-plane"></i> 
-                    </button> 
-                </div>
-                <div class="comment">
-                    comments......
-                </div> {% endcomment %}
 
 
                 {% for review in reviews %}
                 <div class="review_post">
                     {% comment %} <h4>"userName"</h3>  {% endcomment %}
-                    <h4>{{review.restaurant.name}}</h3>
+                    <h4>{{review.restaurant.name}}</h4>
                     <div class="commentStar"> 
                         <button class="btnSatr">
                             {{ review.ratings }}⭐️ 
@@ -70,29 +59,9 @@
                 </div>
                 <hr>
                 {% endfor %}
-
-
             </div>
             <hr>
-           
-
 		</section>
-		<script type="text/javascript">
-
-
-
-            
-			// var img = document.getElementsByClassName("img")[0]
-			// var i=2;
-			// img.onclick = function(){
-			//  if(i>3) i=1
-			// this.src =  "images/"+i+".jpg"
-			// i++
-			// }
-
-           
-        
-		</script>
 	</body>
 </html>
 

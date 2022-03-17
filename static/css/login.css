@@ -16,15 +16,12 @@ input[type=email] {
 }
 
 .container {
-    width: 100%;
-    max-width: 850px;
-    padding: 20px;
-    margin: auto;
-    padding-top: 100px;
+    margin-top: 150px;
+    text-align: center;
 }
 
 .btn {
-    width: 65%;
+    width: 45%;
     padding: .5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
@@ -34,10 +31,6 @@ input[type=email] {
     border-color: #007bff;
 }
 
-.form-signin {
-    padding-left: 200px;
-}
-
 .helptext {
     color: red;
 }
@@ -45,4 +38,9 @@ input[type=email] {
 .footer {
     padding-top: 100px;
     height: 100px;
+}
+
+.remindText {
+    text-align: center;
+    color: rgb(9, 32, 231);
 }

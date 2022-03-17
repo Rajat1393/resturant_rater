@@ -1,18 +1,18 @@
 class StarRating extends HTMLElement {
-    get value () {
+    get value() {
         return this.getAttribute('value') || 0;
     }
 
-    set value (val) {
+    set value(val) {
         this.setAttribute('value', val);
         this.highlight(this.value - 1);
     }
 
-    get number () {
+    get number() {
         return this.getAttribute('number') || 5;
     }
 
-    set number (val) {
+    set number(val) {
         this.setAttribute('number', val);
 
         this.stars = [];
@@ -31,13 +31,13 @@ class StarRating extends HTMLElement {
         this.value = this.value;
     }
 
-    highlight (index) {
+    highlight(index) {
         this.stars.forEach((star, i) => {
             star.classList.toggle('full', i <= index);
         });
     }
 
-    constructor () {
+    constructor() {
         super();
 
         this.number = this.number;
@@ -61,6 +61,15 @@ class StarRating extends HTMLElement {
 
             let rateEvent = new Event('rate');
             this.dispatchEvent(rateEvent);
+
+            let id = rateEvent.target.id
+            if (id == "getPrice") {
+                $("#price").val(this.value)
+            } else if (id == "getQuality") {
+                $("#quality").val(this.value)
+            } else if (id == "getAtmosphere") {
+                $("#atmosphere").val(this.value)
+            }
         });
     }
 }

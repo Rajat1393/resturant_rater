@@ -4,8 +4,8 @@
 }
 
 .myratings {
-    font-size: 85px;
-    color: green
+    font-size: 40px;
+    color: #eab825;
 }
 
 .rating>[id^="star"] {

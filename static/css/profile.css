@@ -13,14 +13,14 @@ section {
 .center {
     flex: 10 80%;
     margin: 0 30px;
-    line-height: 60px;
+    /* line-height: 60px; */
     color: #848484;
-    font-size: 28px;
+    /* font-size: 28px; */
 }
 
 .center label {
     display: inline-block;
-    width: 240px;
+    /* width: 240px; */
     margin-right: 20px;
 }
 
@@ -45,7 +45,8 @@ input {
 }
 
 form {
-    margin: 40px 80px;
+    /* margin: 20px 30px; */
+    margin-left: 30px;
 }
 
 form div {
@@ -89,9 +90,27 @@ form div:first-of-type input {
 
 .btnSatr {
     color: rgb(255, 255, 255);
-    margin: 1rem;
+    margin-left: 1rem;
     margin-bottom: 0px;
     border-radius: .25rem!important;
     background-color: hsl(118deg 84% 29% / 86%);
     border-color: hsl(118deg 84% 29% / 86%);
+}
+
+img {
+    border-radius: 1rem;
+    margin-bottom: 10px;
+}
+
+.h4,
+h4 {
+    margin-left: 1rem;
+}
+
+#customFile {
+    width: 10px;
+}
+
+.custom-file {
+    margin-bottom: 10px;
 }
