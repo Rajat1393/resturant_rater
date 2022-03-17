@@ -47,18 +47,23 @@
         <div class="container">
             <!-- 修正排版為三項排一排 -->
             <div class="row">
-                <div class="col-md-4">
-                    <div class="intro-box">
-                        <div class="imagepart">
-                            <div class="icon py-5">
-                                <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
+                {% comment %} <a href="/rater/overview/?'The Brunch Club'"> {% endcomment %}
+                {% comment %} <a href="/rater/overview/"> {% endcomment %}
+                    <div class="col-md-4">
+                        <div class="intro-box" id="brunchClub">
+                            <div class="imagepart">
+                                <div class="icon py-5">
+                                    <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
+                                </div>
                             </div>
+                            <h3 class="text-secondary" id = "getBrunchClub">The Brunch Club</h3>
+                            <div class="intro-line bg-primary"></div>
+                            <p>
+                                Low-key all-day brunch restaurant, serving hearty staples & cocktails in cool surrounds.</p>
+                            {% comment %} </a> {% endcomment %}
                         </div>
-                        <h3 class="text-secondary">Restaurant 1</h3>
-                        <div class="intro-line bg-primary"></div>
-                        <p>Famous for the food and the service.</p>
                     </div>
-                </div>
+                </a>
                 <div class="col-md-4">
                     <div class="intro-box">
                         <div class="imagepart2">
@@ -66,9 +71,9 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <h3 class="text-secondary">Restaurant 2</h3>
+                        <h3 class="text-secondary">Tantrum Doughnuts</h3>
                         <div class="intro-line bg-primary"></div>
-                        <p>Famous for the food and the service.</p>
+                        <p>Doughnut Shop.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -78,9 +83,9 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <h3 class="text-secondary">Restaurant 3</h3>
+                        <h3 class="text-secondary">Five March</h3>
                         <div class="intro-line bg-primary"></div>
-                        <p>Famous for the food and the service.</p>
+                        <p>Modern, laid-back hangout decorated with greenery, doling out sharing plates, cocktails & wine.</p>
                     </div>
                 </div>
             </div>
@@ -93,9 +98,9 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <h3 class="text-secondary">Restaurant 4</h3>
+                        <h3 class="text-secondary">Mister Singh's India</h3>
                         <div class="intro-line bg-primary"></div>
-                        <p>Famous for the food and the service.</p>
+                        <p>Indian spices and fragrances mixed with Scottish produce in modest rooms hung with Asian art.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -105,9 +110,9 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <h3 class="text-secondary">Restaurant 5</h3>
+                        <h3 class="text-secondary">Buck's BarRestaurant</h3>
                         <div class="intro-line bg-primary"></div>
-                        <p>Famous for the food and the service.</p>
+                        <p>Upbeat venue specialising in live rock bands.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -117,9 +122,9 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <h3 class="text-secondary">Restaurant 6</h3>
+                        <h3 class="text-secondary">The Quay China Garden</h3>
                         <div class="intro-line bg-primary"></div>
-                        <p>Famous for the food and the service.</p>
+                        <p>Chinese takeaway.</p>
                     </div>
                 </div>
             </div>
@@ -143,5 +148,9 @@
         </div>
     </div>
 </div>
+{% comment %} {% csrf_token %} {% endcomment %}
+{% block javascript %}
+
+{% endblock %}
 
 {% endblock %}

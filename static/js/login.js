@@ -13,7 +13,6 @@ $(document).ready(function() {
         var username = $("#id_username").val();
         if (username == "") {
             $("#helptextUser").show();
-            console.log("--", username)
         }
     });
 
@@ -70,8 +69,4 @@ $(document).ready(function() {
             $("#helptextPassword3").hide();
         }
     });
-
-
-
-
 });

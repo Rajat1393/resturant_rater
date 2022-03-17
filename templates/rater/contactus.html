@@ -1,35 +1,40 @@
+
+
+
+
 {% extends 'rater/base.html' %}
 {% load static %}
 
 {% block title_block %}
-    Homepage
+    ContactUs
+{% endblock %}
+
+{% block style %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block body_block %}
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>resturant_rater</title>
-   
-</head>
-<body>
-    <div class="jumbotron p-4">
-        <div class="container">
-            <br>
-            <h1 class="jumbotron-heading">Contact Us</h1>
-            <div>
-                <h4 class="h2">
+<section class="section">
+        {% comment %} <div > {% endcomment %}
+            {% comment %} <br> {% endcomment %}
+            
+            <div class='center'>
+                <form id="user_form" method="post" action="{% url 'rater:getuserprofile' %}" enctype="multipart/form-data">
+                <h1 class="jumbotron-heading">Contact Us</h1>
                 <br>
-                Email: 26xxxxx@gmail.com<br>
-                Telephone: 075xx-xxx-xxx<br>
-                Address: University of Glasgow, Glasgow<br>
-                </h4>
-                <strong>{{ boldmessage }}</strong>
+                <div>
+                    <p class='pText'>Email:</p>
+                    <p class='pText2'>26xxxxx@gmail.com</p>
+                </div>
+                <div>
+                <p class='pText'>Telephone: </p> <p class='pText2'>075xx-xxx-xxx</p>
+                </div>
+                <div>
+                    <p class='pText'>Address: </p> <p class='pText2'>University of Glasgow, Glasgow</p>
+                </div>
+            </form>
             </div>
-        </div>
-    </div>
+    </section>
    
-</body>
+
 {% endblock %}

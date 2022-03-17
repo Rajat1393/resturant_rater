@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card">
-                                <div class="card-body text-center"> <span class="myratings">4{{rating}}<i class="fas fa-star"></i></span>
+                                <div class="card-body text-center"> <span id="rating" class="myratings">{{rating}}<i class="fas fa-star"></i></span>
                                     {% comment %} <h4 class="mt-1">Rate us</h4> {% endcomment %}
                                 </div>
                                 
@@ -55,7 +55,7 @@
                 <h4>{{review.user.username}}</h4>
                 <div class="commentStar"> 
                     <button class="btnSatr">
-                        {{ review.ratings }}⭐️ 
+                        {{ review.ratings }}<i class="fas fa-star"></i>
                     </button> 
                 </div>
                 <div class="comment">
@@ -70,6 +70,7 @@
         <script src="{% static 'js/jquery-3.6.0.min.js' %}" crossorigin="anonymous"></script>
         <script src="{% static 'js/overview.js' %}" crossorigin="anonymous"></script>
         <script src="{% static 'js/star.js' %}" crossorigin="anonymous"></script>
+
         
         {% endblock %}
        

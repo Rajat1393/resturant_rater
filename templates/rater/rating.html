@@ -32,7 +32,7 @@
           <form class="form-signin jumbotron" id = 'user-form' method="post" action="{% url 'rater:add_review' %}"  enctype="multipart/form-data">
             {% csrf_token %}
               <div class="form-group">
-                <label for="exampleFormControlTextarea1" class="h3">Write a Reivew</label>
+                <label for="exampleFormControlTextarea1" class="h3">Write a review</label>
                 <input id="googleplaceid" name="googleplaceid" hidden></input>
                 <textarea class="form-control" name="review" id="review" rows="3"></textarea>
               </div>

@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block style %}
-<link href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="{% static 'css/profile.css' %}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
@@ -15,7 +14,7 @@
                   <form method="POST" action="{% url 'rater:updateuserprofile' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ update_profile_form.as_p }}
-                    <img src="{{ user.userprofile.picture.url }}" width="240" alt = "no image"/>
+                    <img id="imgProfile" src="{{ user.userprofile.picture.url }}" width="240" alt = "no image"/>
                     <br />
                     <div class="custom-file">
                         <input type="file" name="picture" class="custom-file-input" accept="image/*" id="customFile">
@@ -26,44 +25,40 @@
 
                     
                     <input type="submit" name="submit" class="btn btn-secondary" value="Update"/>
-                  </form>
+                </form>
 
 			<div class="center">
 				<form id="user_form" method="post" action="{% url 'rater:getuserprofile' %}" enctype="multipart/form-data">
 					<div>
-                        <p>
-						<label for="male">Email address:</label>
-						{{user.email}} 
-                        </p>
+                        <p class="pText">Email address:</p>
+                        <p class="pText">{{user.email}}</p>
 					</div>
 					<div>
-                        <p>
-						<label for="male">Username:</label>
-						{{ user.username }}
-                        </p> 
+                        <p class="pText">Username:</p>
+                        <p class="pText">{{ user.username }}</p> 
+					</div>
+                    <div>
+                        <p class="pText">History review:</p> 
 					</div>
 
-
-                {% for review in reviews %}
-                <div class="review_post">
-                    {% comment %} <h4>"userName"</h3>  {% endcomment %}
-                    <h4>{{review.restaurant.name}}</h4>
-                    <div class="commentStar"> 
-                        <button class="btnSatr">
-                            {{ review.ratings }}⭐️ 
-                        </button> 
+                    {% for review in reviews %}
+                    <div class="review_post">
+                        <h4>{{review.restaurant.name}}</h4>
+                        <div class="commentStar"> 
+                            <button class="btnSatr">
+                                {{ review.ratings }}<i class="fas fa-star"></i>
+                            </button> 
+                        </div>
+                        <div class="comment">
+                            {{ review.comments }}
+                        </div>
                     </div>
-                    <div class="comment">
-                        {{ review.comments }}
-                    </div>
-                </div>
-                <hr>
-                {% endfor %}
+                    <hr>
+                    {% endfor %}
+                </form>
             </div>
             <hr>
 		</section>
-	</body>
-</html>
 
 {% endblock %}
 

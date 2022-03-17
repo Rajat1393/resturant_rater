@@ -36,7 +36,8 @@
             {% if user.is_authenticated %}
             <a class="navbar-brand p-2 ml-auto" href="{% url 'rater:logout' %}?next=/rater/">Logout</a>
             
-            <a class="navbar-brand p-2" href="{% url 'rater:getuserprofile' %}">profile</a>
+            {% comment %} <a class="navbar-brand p-2" href="{% url 'rater:getuserprofile' %}">profile</a> {% endcomment %}
+            <a class="navbar-brand p-2" href="{% url 'rater:getuserprofile' %}"><img style="width:30px;border-radius: 1rem!important;" src="{% static 'images/profile.jpg'%}" class="imagesRes"/></a>
             {% else %}
             <a class="navbar-brand p-2 ml-auto" href="{% url 'rater:register' %}">Register Here</a>
             <a class="navbar-brand p-2 " href="{% url 'rater:login' %}">Login</a>
