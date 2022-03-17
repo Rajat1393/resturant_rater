@@ -46,7 +46,9 @@
     <section id="introSection" class="py-5">
         <form id="targetForm" method="post" action="{% url 'rater:search' %}">
             {% csrf_token %}
+
         <div class="container">
+            <input type="text" id="submitValue" name="query" hidden></input>
             <!-- 修正排版為三項排一排 -->
             <div class="row">
                     <div class="col-md-4">
@@ -56,7 +58,7 @@
                                     <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <input type="text" name="query" value="The Brunch Club" hidden></input>
+                            {% comment %} <input type="text" name="query" value="The Brunch Club" hidden></input> {% endcomment %}
                             <h3 class="text-secondary" >The Brunch Club</h3></input>
                             <div class="intro-line bg-primary"></div>
                             <p>
@@ -71,7 +73,7 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <input type="text" name="query" value="Tantrum Doughnuts" hidden></input>
+                        {% comment %} <input type="text" name="query" value="Tantrum Doughnuts" hidden></input> {% endcomment %}
                         <h3 class="text-secondary">Tantrum Doughnuts</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Doughnut Shop.</p>
@@ -84,7 +86,7 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <input type="text" name="query" value="Five March" hidden></input>
+                        {% comment %} <input type="text" name="query" value="Five March" hidden></input> {% endcomment %}
                         <h3 class="text-secondary">Five March</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Modern, laid-back hangout decorated with greenery, doling out sharing plates, cocktails & wine.</p>
@@ -100,7 +102,7 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <input type="text" name="query" value="Mister Singh's India" hidden></input>
+                        {% comment %} <input type="text" name="query" value="Mister Singh's India" hidden></input> {% endcomment %}
                         <h3 class="text-secondary">Mister Singh's India</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Indian spices and fragrances mixed with Scottish produce in modest rooms hung with Asian art.</p>
@@ -113,7 +115,7 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <input type="text" name="query" value="Buck's BarRestaurant" hidden></input>
+                        {% comment %} <input type="text" name="query" value="Buck's BarRestaurant" hidden></input> {% endcomment %}
                         <h3 class="text-secondary">Buck's BarRestaurant</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Upbeat venue specialising in live rock bands.</p>
@@ -126,7 +128,7 @@
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
-                        <input type="text" name="query" value="The Quay China Garden" hidden></input>
+                        {% comment %} <input type="text" name="query" value="The Quay China Garden" hidden></input> {% endcomment %}
                         <h3 class="text-secondary">The Quay China Garden</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Chinese takeaway.</p>
