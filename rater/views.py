@@ -109,28 +109,30 @@ def add_review(request):
 
 def search(request):
     query = request.POST['query'].strip()
-    getplaceid = requests.get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" +query.strip() + "&inputtype=textquery&locationbias=circle:3000@55.8642° N, 4.2518° W &key=AIzaSyAEGrpbyqVAyF1OS_G74NJtdazbOwiHLf0")
-    place = getplaceid.json()
-    eatery =place['candidates'][0]['place_id']
-    response = requests.get('https://maps.googleapis.com/maps/api/place/details/json?place_id='+ eatery+'&fields=formatted_address,name,formatted_phone_number,opening_hours/weekday_text,types&key=AIzaSyAEGrpbyqVAyF1OS_G74NJtdazbOwiHLf0')
-    geodata = response.json()
     contextdict = {}
-    address = geodata['result']['formatted_address']
-    phone = geodata['result']['formatted_phone_number']
-    name = geodata['result']['name']
-    contextdict['name'] = name
-    contextdict['phone'] = phone
-    contextdict['address'] = address
-    contextdict['googleplaceid'] = eatery.strip()
-    dbrestuarant = Restaurant.objects.filter(googleplaceid = eatery.strip()).exists()
+    dbrestuarant = Restaurant.objects.filter(name__icontains = query.strip()).exists()
     if(not dbrestuarant):
+        getplaceid = requests.get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" +query.strip() + "&inputtype=textquery&locationbias=circle:3000@55.8642° N, 4.2518° W &key=AIzaSyAEGrpbyqVAyF1OS_G74NJtdazbOwiHLf0")
+        place = getplaceid.json()
+        eatery =place['candidates'][0]['place_id']
+        response = requests.get('https://maps.googleapis.com/maps/api/place/details/json?place_id='+ eatery+'&fields=formatted_address,name,formatted_phone_number,opening_hours/weekday_text,types&key=AIzaSyAEGrpbyqVAyF1OS_G74NJtdazbOwiHLf0')
+        geodata = response.json()
+        address = geodata['result']['formatted_address']
+        if "formatted_phone_number" in geodata['result']:
+            phone = geodata['result']['formatted_phone_number']
+        else:
+            phone = 'phone not available'
+        name = geodata['result']['name']
         restaurant = Restaurant(location = address,name = name,description = 'food, drinks',phoneno = phone,googleplaceid = eatery.strip())
         restaurant.save()
         contextdict['reviewlist'] = []
-        contextdict['rating'] = 0
+        contextdict['rating'] = 5
+        contextdict['name'] = name
+        contextdict['phone'] = phone
+        contextdict['address'] = address
+        contextdict['googleplaceid'] = eatery.strip()
     else:
-        restaurant = Restaurant.objects.get(googleplaceid = eatery.strip())
-        print(restaurant)
+        restaurant = Restaurant.objects.get(name__icontains = query.strip())
         review_list = Review.objects.all().filter(restaurant = restaurant)        
         contextdict['reviewlist'] = review_list
         if(len(review_list))>0:
@@ -140,8 +142,11 @@ def search(request):
              rating = int(rating/len(review_list))
              contextdict['rating'] = rating
         else:
-             contextdict['rating'] = 5     
-    
+             contextdict['rating'] = 5  
+        contextdict['name'] = restaurant.name
+        contextdict['phone'] = restaurant.phoneno
+        contextdict['address'] = restaurant.location
+        contextdict['googleplaceid'] = restaurant.googleplaceid  
     return render(request, 'rater/overview.html', context=contextdict)
 
 
