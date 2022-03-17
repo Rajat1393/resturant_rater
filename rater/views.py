@@ -15,6 +15,10 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.views import View
 
+from django.http import JsonResponse
+import json
+from django.core import serializers
+
 def index(request):
     return render(request, 'rater/index.html')
 
@@ -99,10 +103,10 @@ def add_review(request):
         rating = 0
         for review in review_list:
             rating = review.ratings + rating
-        rating = int(rating/len(review_list))
+            rating = int(rating/len(review_list))
         contextdict['rating'] = rating
     else:
-        contextdict['rating'] = 5
+        contextdict['rating'] = 0
     contextdict['reviewlist'] = review_list
     return render(request, 'rater/overview.html', context=contextdict)
 

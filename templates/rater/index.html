@@ -44,11 +44,11 @@
 
 <div class="container">
     <section id="introSection" class="py-5">
+        <form id="targetForm" method="post" action="{% url 'rater:search' %}">
+            {% csrf_token %}
         <div class="container">
             <!-- 修正排版為三項排一排 -->
             <div class="row">
-                {% comment %} <a href="/rater/overview/?'The Brunch Club'"> {% endcomment %}
-                {% comment %} <a href="/rater/overview/"> {% endcomment %}
                     <div class="col-md-4">
                         <div class="intro-box" id="brunchClub">
                             <div class="imagepart">
@@ -56,33 +56,35 @@
                                     <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                                 </div>
                             </div>
-                            <h3 class="text-secondary" id = "getBrunchClub">The Brunch Club</h3>
+                            <input type="text" name="query" value="The Brunch Club" hidden></input>
+                            <h3 class="text-secondary" >The Brunch Club</h3></input>
                             <div class="intro-line bg-primary"></div>
                             <p>
                                 Low-key all-day brunch restaurant, serving hearty staples & cocktails in cool surrounds.</p>
-                            {% comment %} </a> {% endcomment %}
                         </div>
                     </div>
                 </a>
                 <div class="col-md-4">
-                    <div class="intro-box">
+                    <div class="intro-box" id="Tantrum">
                         <div class="imagepart2">
                             <div class="icon py-5">
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
+                        <input type="text" name="query" value="Tantrum Doughnuts" hidden></input>
                         <h3 class="text-secondary">Tantrum Doughnuts</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Doughnut Shop.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="intro-box">
+                    <div class="intro-box" id="Five">
                         <div class="imagepart3">
                             <div class="icon py-5">
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
+                        <input type="text" name="query" value="Five March" hidden></input>
                         <h3 class="text-secondary">Five March</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Modern, laid-back hangout decorated with greenery, doling out sharing plates, cocktails & wine.</p>
@@ -92,36 +94,39 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="intro-box">
+                    <div class="intro-box" id="Mister">
                         <div class="imagepart4">
                             <div class="icon py-5">
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
+                        <input type="text" name="query" value="Mister Singh's India" hidden></input>
                         <h3 class="text-secondary">Mister Singh's India</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Indian spices and fragrances mixed with Scottish produce in modest rooms hung with Asian art.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="intro-box">
+                    <div class="intro-box" id="Buck">
                         <div class="imagepart5">
                             <div class="icon py-5">
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
+                        <input type="text" name="query" value="Buck's BarRestaurant" hidden></input>
                         <h3 class="text-secondary">Buck's BarRestaurant</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Upbeat venue specialising in live rock bands.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="intro-box">
+                    <div class="intro-box" id="Garden">
                         <div class="imagepart6">
                             <div class="icon py-5">
                                 <i class="fas fa-paper-plane fa-5x" aria-hidden="true"></i>
                             </div>
                         </div>
+                        <input type="text" name="query" value="The Quay China Garden" hidden></input>
                         <h3 class="text-secondary">The Quay China Garden</h3>
                         <div class="intro-line bg-primary"></div>
                         <p>Chinese takeaway.</p>
@@ -130,6 +135,7 @@
             </div>
             
         </div>
+    </form>
     </section>
 </div>
 
@@ -150,7 +156,8 @@
 </div>
 {% comment %} {% csrf_token %} {% endcomment %}
 {% block javascript %}
-
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}" crossorigin="anonymous"></script>
+        <script src="{% static 'js/index.js' %}" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% endblock %}
